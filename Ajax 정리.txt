@@ -1,0 +1,55 @@
+Ajax 정리
+
+$.ajax({
+		type :"POST",
+		url : "",
+		dataType : "서버로부터 어떤 type으로 받을지 적는다.",		
+        contentType : 서버로 보내는 데이터의 유형,
+		async : 비동기식 과정의 유무 true/false,
+		data : 서버로 보낼 데이터 객체,
+		headers : {서버로 보내는 header 정보 }		
+		success : function(response) {
+            
+		},
+		error : function(xmlHttpRequest, textStatus, errorThrown) {
+			
+		}
+	});
+------------------------------------------------------------------------------------------------------------
+contentType의 종류
+1. application/x-www-form-urlencoded   (default)
+    ※ (참고) application/x-www-form-urlencoded로 보내는 경우, HTTP Request Message의 Body를 사용해서 데이터를 보내는 것으로, 
+    이 경우 전송되는 데이터의 페이로드 값은 “key=value&key2=value2” 형태를 갖는다. 그리고 서버로 들어온 데이터는 request.getParameterMap()으로 HashMap을 받아서 사용한다.    
+    예) 
+    Map<String, Object> requestMap = request.getParameterMap();
+
+2. application/json
+    ※ (참고) application/json으로 보내는 경우, HTTP Request Message의 Payload를 보내는 것으로, 이 경우 전송되는 데이터의 페이로드 값은 예를 들어
+    , {“key”:”value”, “key2”:”value2”} 형태로 대체로 복잡한 오브젝트 형태를 가지는 JSON 객체가 될 수 있습니다. 그리고, 서버로 들어온 데이터는 request.getReader().lines().collect(Collectors.joining())
+    으로 받거나 또는 JSON 라이브러리를 사용한다.
+    예) jsonUserPermList =>  [{},{},{}] 형태의 객체를 포함한 배열 json
+    JSONParser parser = new JSONParser();		
+	requestMap.put("jsonUserPermList",parser.parse( (String)requestMap.get("jsonUserPermList") ));
+    이후 사용하는곳
+    JSONArray jsonUserPermList = (JSONArray)requestMap.get("jsonUserPermList");
+    JSONObject object;
+    for(int i=0; i<jsonUserPermList.size();i++){				        
+        object = (JSONObject)(jsonUserPermList.get(i));
+        object.get("key1");
+        object.get("key2");        
+    }
+------------------------------------------------------------------------------------------------------------
+data 
+※ contentType에 따라 보내는 형태가 정해진다.
+1. application/x-www-form-urlencoded 경우 그냥 자바스크립트 객체 param = { key : 'value'} 형태로 보내면 된다.
+2. application/json 경우 JSON.stringfy(param)으로 보내는데 이 경우 json 형태의 객체를 문자열로 보내게 된다
+
+success/error function
+1. success 응답 status code가 2xx인 경우 실행됨
+    response 응답 body부에 있는 데이터이다.
+2. error   응답 status code가 2xx가 아닌 경우 실행됨
+    xmlHttpRequest, textStatus, errorThrown 를 인자로 받음
+    xmlHttpRequest 에러 정보를 담고 있는 객체
+    textStatus 'error' string값을 가지고 있다
+    errorThrown HTTP 오류 메시지
+------------------------------------------------------------------------------------------------------------
