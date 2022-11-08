@@ -73,8 +73,23 @@ console.log(string.includes('5'));// true
  * g: global 전체 모든 문자열을 변경
  * i: ignore 영문 대소문자를 무시하고 일치하는 패턴 전부
  */
-
  let test = "가나다라 마바사 가나";
- let result = test.replace( /가/gi, '나');
- 
+ let result = test.replace( /가/gi, '나'); 
  console.log(result);
+
+ /**
+ * test
+ * g: global 전체 모든 문자열을 변경
+ * i: ignore 영문 대소문자를 무시하고 일치하는 패턴 전부
+ * 일치여부에 따라 true / false를 반환한다.
+ */
+  let test1 = "\\asd\\qwer";
+  let test2 = "\/asd\\qwer";  
+  let result1 = /^[\/\\].*/.test(test1);
+  let result2 = /^[\/\\].*/.test(test2);
+  console.log(result2);
+
+  let test3 = "asd\\qwer\\";
+  let test4 = "asd\\qwer\/";  
+  let result3 = /.*[\/\\]$/.test(test3);
+  let result4 = /.*[\/\\]$/.test(test4);
