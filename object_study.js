@@ -43,6 +43,20 @@ function User(name,age){
 const mike = new User('mike',25);
 console.log(mike);
 
+/**
+ * for...in
+ * /
+const object = { a: 1, b: 2, c: 3 };
+for (const property in object) {
+  console.log(`${property}: ${object[property]}`);
+}
+//"a: 1"  "b: 2" "c: 3"
 
-
+/**
+ * 동적으로 key값 만들기
+ * person1 :20 , person2 : 20 .... 형태로 만들어짐
+ */
+for (var i = 0; i <5; i++) {
+    Object.assign(user,{["person"+i]]:20});    
+}
 
