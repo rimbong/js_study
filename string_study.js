@@ -72,6 +72,7 @@ console.log(string.includes('5'));// true
  * replace
  * g: global 전체 모든 문자열을 변경
  * i: ignore 영문 대소문자를 무시하고 일치하는 패턴 전부
+ * return 변경된 값
  */
  let test = "가나다라 마바사 가나";
  let result = test.replace( /가/gi, '나'); 
@@ -79,17 +80,23 @@ console.log(string.includes('5'));// true
 
  /**
  * test
- * g: global 전체 모든 문자열을 변경
- * i: ignore 영문 대소문자를 무시하고 일치하는 패턴 전부
+ * 
  * 일치여부에 따라 true / false를 반환한다.
  */
   let test1 = "\\asd\\qwer";
   let test2 = "\/asd\\qwer";  
   let result1 = /^[\/\\].*/.test(test1);
-  let result2 = /^[\/\\].*/.test(test2);
-  console.log(result2);
+  let result2 = /^[\/\\].*/.test(test2);  
 
-  let test3 = "asd\\qwer\\";
-  let test4 = "asd\\qwer\/";  
-  let result3 = /.*[\/\\]$/.test(test3);
-  let result4 = /.*[\/\\]$/.test(test4);
+ /**
+ * match
+ * 
+ * 문자열이 정규식과 일치하면, 일치하는 전체 문자열을 첫 번째 요소로 포함하는 Array를 반환한다.
+ */
+var replacedArr = Fitem.str.match(/([\\]["'])(.)*?\1/gi);  
+if(replacedArr){    
+    replacedArr.forEach((item) => {
+        var replaceStr = item.replace(/\\\"/gi,"\"");
+        Fitem.str = Fitem.str.replace(item,replaceStr);
+    });
+}
