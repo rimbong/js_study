@@ -4,11 +4,17 @@ Arrays Method
 let arr_num= [0,1,2,3,4,5,6];
 let arr_str= ['abc','cd','efg','gh','ijk'];
 /* 
-splice(n,m)  => n 시작점 / m 개수 
+splice(n,m,item)  => n 시작점 / m 개수(0이하일 경우 해당자리에 추가를 한다.) / item 교체 및 추가할 요소
 return 분할한 배열을 리턴한다.
 */
 console.log(arr_num.splice(2,4)); // [2,3,4,5]
 arr_num= [0,1,2,3,4,5,6]; // 없어지므로 재할당 해준다.
+
+const months = ['Jan', 'March', 'April', 'June'];
+months.splice(1, 0, 'Feb');
+// inserts at index 1   ["Jan", "Feb", "March", "April", "June"]
+console.log(months);
+
 /* 
 slice(n,m) => n 시작점 / m 미만점(포함하지 않음, 없으면 끝까지)
 */
