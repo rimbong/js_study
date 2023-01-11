@@ -86,6 +86,7 @@ console.log(arr_str.join('-'));// abc-cd-efg-gh-ijk
 /* 
 split(c)
 return 특정문자열에서 c를 기준으로 분환하려 배열로 반환
+주의:빈 문자열이 주어졌을 경우 split()은 빈 배열이 아니라 빈 문자열을 포함한 배열을 반환합니다. 문자열과 separator가 모두 빈 문자열일 때는 빈 배열을 반환합니다.
 */
 console.log("a-b-c-d".split('-'));//[ 'a', 'b', 'c', 'd' ]
 /* 
