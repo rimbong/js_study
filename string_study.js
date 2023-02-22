@@ -40,9 +40,7 @@ console.log(string.indexOf('3'));// 3
 console.log(string.lastIndexOf('2'));// 2
 /* 
     slice(n,m) => n 시작점  / m 미만점 (포함하지않음, 없으면 문자열 끝까지)
-    return 조건에 만족하는 문자열
-    var menuObject = Array.prototype.slice.call( document.querySelectorAll('.menu'));   
-    위 처럼 querySelectorAll의 결과로 얻는 NodeList는 배열이 아닌데, 이를 배열로 만들어 주기 위해 사용할 수 있다.
+    return 조건에 만족하는 문자열    
 */
 console.log(string.slice(2,5));//   234
 

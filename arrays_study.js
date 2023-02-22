@@ -17,6 +17,8 @@ console.log(months);
 
 /* 
 slice(n,m) => n 시작점 / m 미만점(포함하지 않음, 없으면 끝까지)
+var menuObject = Array.prototype.slice.call( document.querySelectorAll('.menu'));   
+    위 처럼 querySelectorAll의 결과로 얻는 NodeList는 배열이 아닌데, 이를 배열로 만들어 주기 위해 사용할 수 있다.
 */
 console.log(arr_num.slice(2,4)); // [2,3]
 console.log(arr_num.slice(2)); // [2,3,4,5,6]
