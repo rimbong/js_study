@@ -3,6 +3,13 @@ Arrays Method
 */
 let arr_num= [0,1,2,3,4,5,6];
 let arr_str= ['abc','cd','efg','gh','ijk'];
+
+/* 
+배열에 값 추가하기 
+*/
+arr_num.push(7) // : 배열의 맨 끝에 값을 추가한다.
+arr_num.unshift(-1) // : 배열의 맨 앞에 값을 추가한다.
+
 /* 
 splice(n,m,item)  => n 시작점 / m 개수(0이하일 경우 해당자리에 추가를 한다.) / item 교체 및 추가할 요소
 return 분할한 배열을 리턴한다.
