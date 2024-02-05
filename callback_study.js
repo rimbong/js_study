@@ -7,6 +7,9 @@ state : pending ( 대기 상태 )
 result: undefined(초기화 상태);
 이후 성공하면 state : fullfiled , result : value(값)
     실패하면  state : rejected , result : error(에러값)
+
+resolve , reject 콜백함수와 관계없이// 아래와 같이 resolve 또는 reject  콜백이 호출되어 있지않으면 pending 상태로 계속 유지되므로,
+반드시 resolve 또는 reject 콜백을 호출해줘야만 한다
 */
 function User(){
     return new Promise((res,rej)=>{
