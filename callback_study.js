@@ -158,7 +158,8 @@ async function getName(){
 //getName().then((name)=>console.log(name));
 
 //Promise.resolve() 같이 표기하는것은 보통 sync처럼 사용할 때만 사용한다
-//promise내부에 또 promise를 쓰는경우 비동기로 작동하지 않는다(내부 Promise는 작동하지 않을 수 있다.)
+//promise내부에 또 promise를 쓰는경우 비동기로 작동하지 않는다 
+// 내부 Promise는 작동하지 않거나 순서가 꼬일 수 있다. promise 끼리 경쟁이 발생하기 때문
 async function getName2(){
     return Promise.resolve('mike2');
 }
