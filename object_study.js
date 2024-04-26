@@ -2,7 +2,7 @@
 Object method 
 */
 /* 
-Object.assign() 객체 복제 
+Object.assign(target, ...sources); 객체 복제 
 첫번째 인자에 값을 복사한다. 동일한 키값은 덮어 씌워진다.
 */
 const user = {
@@ -10,6 +10,7 @@ const user = {
 }
 Object.assign(user,{age:20},{male:'M',name:'mike'});
 console.log('assign : ',user);
+// assign :  { age: 20, male: 'M', name: 'mike' }
 
 /* 
 Object.keys() : 키 배열 반환

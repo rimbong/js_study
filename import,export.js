@@ -29,6 +29,20 @@ export default {divide,multiple};
 */
 //main.js 
 import math from "./math";
+// 사용시 math.divide 이렇게 사용함
+
+// 기능 모듈이 아닌 class 같은 모듈(pBox) 경우 import 하여 바로 사용하는 경우가 많은데 이 경우에는
+function PBox() {
+    this.data = new Object();
+    this.constructor = 'PBox';
+}
+...
+
+export default PBox
+
+import PBox from "pbox";
+let c = new PBox();
+// 이렇게 바로 사용 할 수 있게 export시 중괄호 처리를 안하고 바로 명명하여 사용 할 수도 있다.
 
 /* 
 결론 : import 할 때 named export는 {} 을 사용해 이름을 명시해주고 default export는 그냥 새로이름을 지어준다.
