@@ -38,8 +38,10 @@ console.log('--------------end--------------');
 생성자
 */
 function User(name,age){
+    // this = {}; 인스턴스 생성시 빈 객체가 만들어진다.
     this.name = name;
     this.age = age;
+    // return this; 이것은 반환되어진다.
 }
 const mike = new User('mike',25);
 console.log(mike);

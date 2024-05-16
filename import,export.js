@@ -6,6 +6,12 @@
 export const plus = (a,b) => a+b;
 export const minus = (a,b) => a-b;
 
+// 또는
+
+const plus = (a,b) => a+b;
+const minus = (a,b) => a-b;
+export {plus,minus}
+
 /*
  import 할 때는 반드시 export 한 이름과 동일하게 import 해야 한다.
   이름을 다르게 하고 싶을 때는 as 키워드를 사용해야 한다.
