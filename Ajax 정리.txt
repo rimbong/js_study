@@ -15,6 +15,35 @@ $.ajax({
 			
 		}
 	});
+
+
+-- multipart
+contentType : false 로 선언 시 content-type 헤더가 multipart/form-data로 전송되게 함
+processData : false로 선언 시 formData를 string으로 변환하지 않음
+            
+
+var formData = new FormData();
+// 파일 추가
+var fileInput = $("#app_file")[0];
+if (fileInput.files.length > 0) {
+    formData.append("app_file", fileInput.files[0]);
+}
+
+// AJAX로 데이터 전송
+$.ajax({
+    url: "/admin/appManagement/appUpload", // 서버의 엔드포인트 URL
+    type: "POST",
+    data: formData,
+    processData: false, // 파일 전송에 필요
+    contentType: false, // 파일 전송에 필요
+    success: function(response) {
+        alert("파일 업로드 및 데이터 전송 성공!");
+        console.log(response);
+    },
+    error: function(xhr, status, error) {
+        console.error("전송 실패:", error);
+    }
+});
 ------------------------------------------------------------------------------------------------------------
 contentType의 종류
 1. application/x-www-form-urlencoded   (default)
