@@ -236,3 +236,82 @@ function callFunction3(){
 
 
 
+/*
+
+
+### 📌 `Promise.resolve()`를 사용하는 경우  
+
+`Promise.resolve(value)`는 **즉시 완료된(fulfilled) Promise를 반환**하는 함수입니다.  
+즉, **이미 값을 가지고 있는 경우** 이를 `Promise`로 감싸서 반환할 때 사용합니다.  
+
+---
+
+## ✅ **1. 이미 있는 값을 Promise로 변환할 때**
+```javascript
+const p = Promise.resolve(42);
+
+p.then(value => {
+  console.log(value); // 42
+});
+```
+📌 `Promise.resolve(42)`는 `new Promise((resolve) => resolve(42))`와 동일한 역할을 합니다.  
+🔹 **동기적인 값을 비동기처럼 다루고 싶을 때 사용**  
+
+---
+
+## ✅ **2. 기존 Promise를 래핑할 때**
+이미 `Promise`인 경우, `Promise.resolve()`를 사용하면 **해당 Promise를 그대로 반환**합니다.
+```javascript
+const existingPromise = new Promise(resolve => setTimeout(() => resolve('Hello'), 1000));
+
+const wrappedPromise = Promise.resolve(existingPromise);
+
+wrappedPromise.then(console.log); // 1초 후 "Hello"
+```
+📌 기존 Promise를 안전하게 감싸서, 항상 Promise 형태로 반환하고 싶을 때 사용합니다.
+
+---
+
+## ✅ **3. 함수가 Promise를 반환하도록 보장할 때**
+비동기 함수를 만들 때, **함수의 반환값이 Promise인지 아닌지 모를 경우** `Promise.resolve()`로 감싸면 **항상 Promise를 반환하도록 강제**할 수 있습니다.
+
+```javascript
+function fetchData(sync = false) {
+  if (sync) {
+    return Promise.resolve("Sync Data");
+  } else {
+    return new Promise(resolve => setTimeout(() => resolve("Async Data"), 1000));
+  }
+}
+
+fetchData(true).then(console.log);  // "Sync Data" 즉시 출력
+fetchData(false).then(console.log); // 1초 후 "Async Data" 출력
+```
+📌 `sync = true`일 때도 항상 `Promise`를 반환하므로 `then()`을 바로 사용할 수 있음.
+
+---
+
+## ✅ **4. `async/await`에서 즉시 반환할 때**
+`async` 함수에서 즉시 값을 반환해야 할 때 유용합니다.
+
+```javascript
+async function getUserData() {
+  return Promise.resolve({ name: "Alice", age: 25 });
+}
+
+getUserData().then(console.log);  // { name: "Alice", age: 25 }
+```
+📌 `Promise.resolve()`를 사용하면 `async` 함수가 항상 `Promise`를 반환하는 것을 보장할 수 있습니다.
+
+---
+
+## 🔥 **결론**
+✅ `Promise.resolve(value)`는 **즉시 완료된 Promise를 반환**  
+✅ **값을 Promise로 감싸서 비동기처럼 다룰 때 사용**  
+✅ **비동기 함수가 항상 Promise를 반환하도록 강제할 때 유용**  
+✅ **이미 있는 Promise를 래핑할 때도 사용 가능**  
+
+🚀 즉, `Promise.resolve()`는 **비동기 코드에서 예외 없이 일관된 Promise 반환을 보장하기 위해 사용됩니다.**
+
+
+*/
