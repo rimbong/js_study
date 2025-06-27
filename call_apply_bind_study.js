@@ -26,7 +26,7 @@ console.log('------------------------------------')
 
 
 /*
-? 문법
+? 문법, 옵션 체이닝
 */
 
 if (typeof update === "function") {
@@ -35,3 +35,8 @@ if (typeof update === "function") {
 
 // 아래와 위는 같은걸 의미한다.
 update?.call(Mike,'1992','singer')
+
+
+let obj = { data: { value: 42 } };
+console.log(obj?.data?.value); // 42
+console.log(obj?.data?.fn?.()); // undefined (에러 없이)
