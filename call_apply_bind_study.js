@@ -23,3 +23,15 @@ const updateMike = update.bind(Mike);
 updateMike("1991",'person');
 console.log(Mike);
 console.log('------------------------------------')
+
+
+/*
+? 문법
+*/
+
+if (typeof update === "function") {
+    update.call(Mike,'1992','singer');
+}
+
+// 아래와 위는 같은걸 의미한다.
+update?.call(Mike,'1992','singer')
