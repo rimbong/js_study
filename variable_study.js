@@ -102,6 +102,17 @@ console.log(title,width,height);
 let t = {q:42,p:30};
 let {p,q} = t
 console.log(p,q);
+
+var o = { p: 42, q: true };
+var { p: foo, q: bar } = o;
+/*
+o 객체에서
+→ p라는 키의 값을 꺼내서 → foo라는 변수에 넣어줘
+→ q라는 키의 값을 꺼내서 → bar라는 변수에 넣어줘
+변수명을 바꾸면서 매핑시키는 방식이다.
+*/
+console.log(foo); // 42
+console.log(bar); // true
 /* 
 클로저
 :함수와 렉시컬 환경의 조합. 함수가 생성될 당시의 외부 변수를 기억하고 
